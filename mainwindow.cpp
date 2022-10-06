@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap icon3(":/img/iconlist.png");
     ui->pushButton_3->setIcon(icon3);
     this->ui->listView->setWordWrap(true);
+    setMinimumSize(800,600);
+    setMaximumSize(800,600);
 }
 
 MainWindow::~MainWindow()
@@ -71,7 +73,6 @@ void MainWindow::on_listView_doubleClicked(const QModelIndex &index)
 void MainWindow::on_pushButton_clicked()
 {
     currentFolder.cdUp();
-
     this->ui->lineEdit->setText(currentFolder.absolutePath());
     model->getFolderList(currentFolder.absolutePath(),this->aDirList);
 }
@@ -87,4 +88,9 @@ void MainWindow::on_pushButton_2_clicked()
 {
     this->ui->listView->setUniformItemSizes(true);
     this->ui->listView->setViewMode(QListView::IconMode);
+}
+
+void MainWindow::on_lineEdit_editingFinished()
+{
+    model->getFolderList(ui->lineEdit->text(), aDirList);
 }

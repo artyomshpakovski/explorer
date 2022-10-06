@@ -27,13 +27,13 @@ QVariant QListViewExplorerModel::data( const QModelIndex &index, int role ) cons
 
         switch ( role )
         {
-            case Qt::DisplayRole: //string
+            case Qt::DisplayRole:
             {
                 value = this->aDirList->at(index.row()).fileName();
             }
             break;
 
-            case Qt::DecorationRole: //icon
+            case Qt::DecorationRole:
             {
                 if (this->aDirList->at(index.row()).isDir()) {
                     QPixmap icon = QPixmap(":/img/folder.png");
@@ -64,7 +64,7 @@ QVariant QListViewExplorerModel::data( const QModelIndex &index, int role ) cons
             }
             break;
 
-            case Qt::UserRole: //data
+            case Qt::UserRole:
             {
                 value = this->aDirList->at(index.row()).fileName();
             }

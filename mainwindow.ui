@@ -14,14 +14,19 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
-      <width>691</width>
-      <height>481</height>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>551</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cascadia Code</family>
+     </font>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
@@ -35,8 +40,14 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
          <property name="readOnly">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -67,7 +78,7 @@
           <widget class="QLabel" name="lbName">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -80,7 +91,7 @@
           <widget class="QLabel" name="setName">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -93,7 +104,7 @@
           <widget class="QLabel" name="lbDepth">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -106,7 +117,7 @@
           <widget class="QLabel" name="setDepth">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -123,7 +134,7 @@
           <widget class="QLabel" name="lbSize">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -136,7 +147,7 @@
           <widget class="QLabel" name="setSize">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -149,7 +160,7 @@
           <widget class="QLabel" name="lbCompr">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -162,7 +173,7 @@
           <widget class="QLabel" name="setCom">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -179,7 +190,7 @@
           <widget class="QLabel" name="lbResolution">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
@@ -192,7 +203,7 @@
           <widget class="QLabel" name="setRes">
            <property name="font">
             <font>
-             <family>MS Reference Sans Serif</family>
+             <family>Cascadia Code</family>
              <pointsize>11</pointsize>
             </font>
            </property>
