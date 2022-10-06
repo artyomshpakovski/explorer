@@ -9,7 +9,7 @@ QListViewExplorerModel::QListViewExplorerModel(QObject *parent)
 void QListViewExplorerModel::getFolderList(QString folderPath, QFileInfoList *dirList)
 {
     QDir dir = QDir(folderPath);
-    *dirList = dir.entryInfoList(QDir::NoDot | QDir::Files | QDir::Dirs, QDir::DirsFirst);
+    *dirList = dir.entryInfoList(QDir::NoDot | QDir::Files | QDir::Dirs | QDir::NoDotDot);
     this->beginResetModel();
     this->aDirList = dirList;
     this->endResetModel();

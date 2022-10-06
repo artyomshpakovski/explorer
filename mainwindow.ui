@@ -14,21 +14,16 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>1</y>
       <width>801</width>
-      <height>551</height>
+      <height>541</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Cascadia Code</family>
-     </font>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
@@ -71,148 +66,161 @@
       <widget class="QListView" name="listView"/>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLabel" name="lbName">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Имя файла:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="setName">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lbDepth">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Глубина цвета:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="setDepth">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QLabel" name="lbName">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Имя файла:</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="lbSize">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Размер:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="setSize">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lbCompr">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Сжатие:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="setCom">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QLabel" name="setName">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QLabel" name="lbResolution">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Разрешение:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="setRes">
-           <property name="font">
-            <font>
-             <family>Cascadia Code</family>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QLabel" name="lbDepth">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Глубина цвета:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="setDepth">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="lbSize">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Размер:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="setSize">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbCompr">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Сжатие:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="setCom">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="lbResolution">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Разрешение:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="setRes">
+         <property name="font">
+          <font>
+           <family>Cascadia Code</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

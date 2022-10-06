@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->ui->listView->setWordWrap(true);
     setMinimumSize(800,600);
     setMaximumSize(800,600);
+    ui->setRes->setAlignment(Qt::AlignLeft);
 }
 
 MainWindow::~MainWindow()
@@ -92,5 +93,11 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_lineEdit_editingFinished()
 {
-    model->getFolderList(ui->lineEdit->text(), aDirList);
+    QDir temp(ui->lineEdit->text());
+    if (temp.exists()) {
+        model->getFolderList(ui->lineEdit->text(), aDirList);
+    }
+    else {
+        ui->lineEdit->setText(currentFolder.absolutePath());
+    }
 }
