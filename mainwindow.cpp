@@ -39,7 +39,6 @@ void MainWindow::on_listView_doubleClicked(const QModelIndex &index)
         } else {
 //            QDesktopServices::openUrl(QUrl(this->aDirList->at(index.row()).absoluteFilePath()));
             QString str = this->aDirList->at(index.row()).absoluteFilePath();
-            QFile file(str);
             QString resolution = "";
             if (str.lastIndexOf('.') == -1) {
                 return;
@@ -58,6 +57,7 @@ void MainWindow::on_listView_doubleClicked(const QModelIndex &index)
             }
             ui->setName->setText(fileName);
             QImage im(str);
+            ui->setName->setWordWrap(false);
             ui->setSize->setText(QString::number(im.size().width())+"x"+QString::number(im.size().height()));
 //            ui->setDepth->setText(QString::number(im.depth()));
             ui->setDepth->setText(QString::number(im.bitPlaneCount()));
