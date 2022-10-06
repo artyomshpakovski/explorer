@@ -4,6 +4,7 @@
 #include <QUrl>
 #include <QDebug>
 #include <QImageWriter>
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -84,6 +85,8 @@ void MainWindow::on_pushButton_3_clicked()
     this->ui->listView->setViewMode(QListView::ListMode);
 
 }
+
+// asdljdjkshkdjas
 
 void MainWindow::on_pushButton_2_clicked()
 {
