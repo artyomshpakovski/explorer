@@ -3,6 +3,7 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QDebug>
+#include <QImageWriter>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -47,7 +48,7 @@ void MainWindow::on_listView_doubleClicked(const QModelIndex &index)
                 resolution.append(str[i]);
             }
             if (resolution != ".jpg" && resolution != ".gif" && resolution != ".tif" && resolution != ".bmp" &&
-                    resolution != "png" && resolution != ".pcx" && resolution != ".BMP") {
+                    resolution != ".png" && resolution != ".pcx" && resolution != ".BMP") {
                 return;
             }
             ui->setRes->setText(resolution);
@@ -57,12 +58,11 @@ void MainWindow::on_listView_doubleClicked(const QModelIndex &index)
             }
             ui->setName->setText(fileName);
             QImage im(str);
-            QSize si = im.size();
-            int height = si.height();
-            int width = si.width();
-            ui->setSize->setText(QString::number(width)+"x"+QString::number(height));
-            ui->setDepth->setText(QString::number(im.depth()));
-
+            ui->setSize->setText(QString::number(im.size().width())+"x"+QString::number(im.size().height()));
+//            ui->setDepth->setText(QString::number(im.depth()));
+            ui->setDepth->setText(QString::number(im.bitPlaneCount()));
+            QImageWriter a(str);
+            ui->setCom->setText(QString::number(a.compression()));
 
         }
 }
