@@ -6,5 +6,6 @@
         <file>img/folderup.png</file>
         <file>img/iconlist.png</file>
         <file>img/list.png</file>
+        <file>img/choice.png</file>
     </qresource>
 </RCC>

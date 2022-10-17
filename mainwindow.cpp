@@ -24,7 +24,9 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap icon2(":/img/list.png");
     ui->pushButton_2->setIcon(icon2);
     QPixmap icon3(":/img/iconlist.png");
+    QPixmap icon4(":/img/choice.png");
     ui->pushButton_3->setIcon(icon3);
+    ui->pbChoice->setIcon(icon4);
     this->ui->listView->setWordWrap(true);
     setMinimumSize(800,600);
     setMaximumSize(800,600);
@@ -118,9 +120,9 @@ void MainWindow::on_pbChoice_clicked()
     files->setWindowTitle("Откройте файлы");
     QList<QUrl> list = files->getOpenFileUrls();
     QDialog *table = new QDialog();
-    table->setWindowTitle("Проводник");
+    table->setWindowTitle("Explorer");
+    table->setWindowIcon(QPixmap(":/img/folder.png"));
     QGridLayout *tableLayout = new QGridLayout(table);
-    table->setMinimumSize(800,800);
     table->setMinimumSize(700,700);
     QTableWidget *twInfo = new QTableWidget(table);
     tableLayout->addWidget(twInfo);
@@ -160,6 +162,9 @@ void MainWindow::on_pbChoice_clicked()
         twInfo->setItem(i, 1, new QTableWidgetItem(QString::number(im.size().width())+"x"+QString::number(im.size().height())));
         twInfo->setItem(i, 3, new QTableWidgetItem(QString::number(im.bitPlaneCount())));
         twInfo->setItem(i, 4, new QTableWidgetItem(QString::number(a.compression())));
+    }
+    if (twInfo->rowCount() == 0) {
+        return;
     }
     table->show();
 
