@@ -17,9 +17,9 @@
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>1</y>
-      <width>801</width>
+      <x>10</x>
+      <y>0</y>
+      <width>781</width>
       <height>541</height>
      </rect>
     </property>
@@ -55,6 +55,13 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pbChoice">
          <property name="text">
           <string/>
          </property>
@@ -191,7 +198,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Разрешение:</string>
+          <string>Расширение:</string>
          </property>
         </widget>
        </item>

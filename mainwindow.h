@@ -26,6 +26,8 @@ private:
 
 private slots:
 
+    void dialogClose();
+
     void on_listView_doubleClicked(const QModelIndex &index);
 
     void on_pushButton_clicked();
@@ -35,5 +37,6 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_lineEdit_editingFinished();
+    void on_pbChoice_clicked();
 };
 #endif // MAINWINDOW_H

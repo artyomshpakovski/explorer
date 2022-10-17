@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QImageWriter>
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QTableWidget>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -32,6 +34,12 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::dialogClose()
+{
+    this->show();
+}
+
 
 void MainWindow::on_listView_doubleClicked(const QModelIndex &index)
 {
@@ -86,8 +94,6 @@ void MainWindow::on_pushButton_3_clicked()
 
 }
 
-// asdljdjkshkdjas
-
 void MainWindow::on_pushButton_2_clicked()
 {
     this->ui->listView->setUniformItemSizes(true);
@@ -103,4 +109,57 @@ void MainWindow::on_lineEdit_editingFinished()
     else {
         ui->lineEdit->setText(currentFolder.absolutePath());
     }
+}
+
+void MainWindow::on_pbChoice_clicked()
+{
+    QFileDialog *files = new QFileDialog;
+    files->setWindowTitle("Откройте файлы");
+    QList<QUrl> list = files->getOpenFileUrls();
+    QDialog *table = new QDialog();
+    table->setWindowTitle("Проводник");
+    QGridLayout *tableLayout = new QGridLayout(table);
+    table->setMinimumSize(800,800);
+    table->setMinimumSize(700,700);
+    QTableWidget *twInfo = new QTableWidget(table);
+    tableLayout->addWidget(twInfo);
+    twInfo->setColumnCount(5);
+    twInfo->setEditTriggers(0);
+    twInfo->setRowCount(list.size());
+    twInfo->setHorizontalHeaderItem(0, new QTableWidgetItem("Имя"));
+    twInfo->setHorizontalHeaderItem(1, new QTableWidgetItem("Размер"));
+    twInfo->setHorizontalHeaderItem(2, new QTableWidgetItem("Расширение"));
+    twInfo->setHorizontalHeaderItem(3, new QTableWidgetItem("Глубина цвета"));
+    twInfo->setHorizontalHeaderItem(4, new QTableWidgetItem("Сжатие"));
+    table->show();
+    for(int i = 0; i < list.size(); i++) {
+        QFile temp(list[i].toLocalFile());
+        QString resolution = "";
+        if (temp.fileName().lastIndexOf('.') == -1) {
+            twInfo->setRowCount(twInfo->rowCount()-1);
+            continue;
+        }
+        for(int i = temp.fileName().lastIndexOf('.'); i < temp.fileName().size(); i++) {
+            resolution.append(temp.fileName()[i]);
+        }
+        if (resolution != ".jpg" && resolution != ".gif" && resolution != ".tif" && resolution != ".bmp" &&
+                resolution != ".png" && resolution != ".pcx" && resolution != ".BMP") {
+            twInfo->setRowCount(twInfo->rowCount()-1);
+            continue;
+        }
+        twInfo->setItem(i, 2, new QTableWidgetItem(resolution));
+        QString fileName = "";
+        for(int i = temp.fileName().lastIndexOf('/') + 1; i < temp.fileName().lastIndexOf('.'); i++) {
+            fileName.append(temp.fileName()[i]);
+        }
+        twInfo->setItem(i,0,new QTableWidgetItem(fileName));
+        QImage im(list[i].toLocalFile());
+        QImageWriter a(list[i].toLocalFile());
+        twInfo->setItem(i, 1, new QTableWidgetItem(QString::number(im.size().width())+"x"+QString::number(im.size().height())));
+        twInfo->setItem(i, 3, new QTableWidgetItem(QString::number(im.bitPlaneCount())));
+        twInfo->setItem(i, 4, new QTableWidgetItem(QString::number(a.compression())));
+    }
+    connect(table, SIGNAL(rejected()), this, SLOT(dialogClose()));
+
+    this->hide();
 }
