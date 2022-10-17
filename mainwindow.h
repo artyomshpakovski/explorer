@@ -5,6 +5,8 @@
 #include <QFileInfoList>
 #include "qlistviewexplorermodel.h"
 #include <QFile>
+#include <QtGui/private/qzipwriter_p.h>
+#include <QtGui/private/qzipreader_p.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,17 +27,11 @@ private:
     QListViewExplorerModel *model;
 
 private slots:
-
     void dialogClose();
-
     void on_listView_doubleClicked(const QModelIndex &index);
-
     void on_pushButton_clicked();
-
     void on_pushButton_2_clicked();
-
     void on_pushButton_3_clicked();
-
     void on_lineEdit_editingFinished();
     void on_pbChoice_clicked();
 };
