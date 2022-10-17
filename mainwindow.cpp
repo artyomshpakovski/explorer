@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QTableWidget>
+#include <QHeaderView>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -131,7 +132,8 @@ void MainWindow::on_pbChoice_clicked()
     twInfo->setHorizontalHeaderItem(2, new QTableWidgetItem("Расширение"));
     twInfo->setHorizontalHeaderItem(3, new QTableWidgetItem("Глубина цвета"));
     twInfo->setHorizontalHeaderItem(4, new QTableWidgetItem("Сжатие"));
-    table->show();
+    twInfo->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
     for(int i = 0; i < list.size(); i++) {
         QFile temp(list[i].toLocalFile());
         QString resolution = "";
@@ -159,6 +161,8 @@ void MainWindow::on_pbChoice_clicked()
         twInfo->setItem(i, 3, new QTableWidgetItem(QString::number(im.bitPlaneCount())));
         twInfo->setItem(i, 4, new QTableWidgetItem(QString::number(a.compression())));
     }
+    table->show();
+
     connect(table, SIGNAL(rejected()), this, SLOT(dialogClose()));
 
     this->hide();
