@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     setMinimumSize(800,600);
     setMaximumSize(800,600);
     ui->setRes->setAlignment(Qt::AlignLeft);
+    QListView a;
 }
 
 MainWindow::~MainWindow()
@@ -41,6 +42,16 @@ MainWindow::~MainWindow()
 void MainWindow::dialogClose()
 {
     this->show();
+}
+
+void MainWindow::twInfoSelected(int logicalIndex)
+{
+    if (logicalIndex == 1) {
+        qDebug()<<logicalIndex;
+        return;
+    }
+    twInfo->sortByColumn(logicalIndex);
+
 }
 
 
@@ -94,7 +105,6 @@ void MainWindow::on_pushButton_3_clicked()
 {
     this->ui->listView->setUniformItemSizes(false);
     this->ui->listView->setViewMode(QListView::ListMode);
-
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -124,7 +134,8 @@ void MainWindow::on_pbChoice_clicked()
     table->setWindowIcon(QPixmap(":/img/folder.png"));
     QGridLayout *tableLayout = new QGridLayout(table);
     table->setMinimumSize(700,700);
-    QTableWidget *twInfo = new QTableWidget(table);
+    twInfo = new QTableWidget(table);
+//    twInfo->setSortingEnabled(true);
     tableLayout->addWidget(twInfo);
     twInfo->setColumnCount(5);
     twInfo->setEditTriggers(0);
@@ -169,6 +180,7 @@ void MainWindow::on_pbChoice_clicked()
     table->show();
 
     connect(table, SIGNAL(rejected()), this, SLOT(dialogClose()));
+    connect(twInfo->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(twInfoSelected(int)));
 
     this->hide();
 }

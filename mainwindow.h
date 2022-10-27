@@ -7,7 +7,7 @@
 #include <QFile>
 #include <QtGui/private/qzipwriter_p.h>
 #include <QtGui/private/qzipreader_p.h>
-
+#include <QTableWidgetItem>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -25,9 +25,11 @@ private:
     QDir currentFolder;
     QFileInfoList *aDirList;
     QListViewExplorerModel *model;
+    QTableWidget *twInfo;
 
 private slots:
     void dialogClose();
+    void twInfoSelected(int logicalIndex);
     void on_listView_doubleClicked(const QModelIndex &index);
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
