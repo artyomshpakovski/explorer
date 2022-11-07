@@ -32,6 +32,9 @@ MainWindow::MainWindow(QWidget *parent)
     setMaximumSize(800,600);
     ui->setRes->setAlignment(Qt::AlignLeft);
     QListView a;
+    for(int i = 0; i < 5; i++) {
+        sorted[i] = 0;
+    }
 }
 
 MainWindow::~MainWindow()
@@ -44,13 +47,110 @@ void MainWindow::dialogClose()
     this->show();
 }
 
+bool f0(QTableWidgetItem* item1, QTableWidgetItem* item2) {
+    return item1->text() > item2->text();
+}
+
+
+bool f1(QTableWidgetItem* item1, QTableWidgetItem* item2) {
+    QStringList string1 = item1->text().split('x');
+    QStringList string2 = item2->text().split('x');
+    if (string1[0].toInt() > string2[0].toInt()) {
+        return true;
+    }
+    return false;
+}
+
+bool f2(QTableWidgetItem* item1, QTableWidgetItem* item2) {
+    return item1->text() > item2 -> text();
+}
+
+bool f3(QTableWidgetItem* item1, QTableWidgetItem* item2) {
+    return item1->text().toInt() > item2->text().toInt();
+}
+
+bool f4(QTableWidgetItem* item1, QTableWidgetItem* item2) {
+    return item1->text().toInt() > item2->text().toInt();
+}
+
+
+
+std::vector<std::function<bool(QTableWidgetItem*, QTableWidgetItem*)>> functions = {f0, f1, f2, f3, f4};
+
+std::vector<int> sorted(5, 0);
+
 void MainWindow::twInfoSelected(int logicalIndex)
 {
-    if (logicalIndex == 1) {
-        qDebug()<<logicalIndex;
-        return;
+    if (sorted[logicalIndex] == 0) {
+        for(int i = 0; i < twInfo->rowCount(); i++) {
+             for(int j = 0; j < twInfo->rowCount() - 1; j++) {
+                 if (functions[logicalIndex](twInfo->item(j, logicalIndex), twInfo->item(j + 1, logicalIndex))) {
+                         for(int k = 0; k < twInfo->columnCount(); k++) {
+                             QString temp1 = twInfo->item(j, k)->text();
+                             QString temp2 = twInfo->item(j + 1, k) -> text();
+                             twInfo->setItem(j+1, k, new QTableWidgetItem(temp1));
+                             twInfo->setItem(j, k, new QTableWidgetItem(temp2));
+                     }
+                 }
+             }
+         }
+        for(int k = 0; k < 5; k++) {
+            sorted[k] = 0;
+        }
+        sorted[logicalIndex] = 1;
     }
-    twInfo->sortByColumn(logicalIndex);
+    else {
+        if (sorted[logicalIndex] == 1) {
+            for(int i = 0; i < twInfo->rowCount(); i++) {
+                 for(int j = 0; j < twInfo->rowCount() - 1; j++) {
+                     if (!functions[logicalIndex](twInfo->item(j, logicalIndex), twInfo->item(j + 1, logicalIndex))) {
+                             for(int k = 0; k < twInfo->columnCount(); k++) {
+                                 QString temp1 = twInfo->item(j, k)->text();
+                                 QString temp2 = twInfo->item(j + 1, k) -> text();
+                                 twInfo->setItem(j+1, k, new QTableWidgetItem(temp1));
+                                 twInfo->setItem(j, k, new QTableWidgetItem(temp2));
+                         }
+                     }
+                 }
+             }
+            for(int k = 0; k < 5; k++) {
+                sorted[k] = 0;
+            }
+            sorted[logicalIndex] = 2;
+        }
+        else {
+            for(int i = 0; i < twInfo->rowCount(); i++) {
+                 for(int j = 0; j < twInfo->rowCount() - 1; j++) {
+                     if (functions[logicalIndex](twInfo->item(j, logicalIndex), twInfo->item(j + 1, logicalIndex))) {
+                             for(int k = 0; k < twInfo->columnCount(); k++) {
+                                 QString temp1 = twInfo->item(j, k)->text();
+                                 QString temp2 = twInfo->item(j + 1, k) -> text();
+                                 twInfo->setItem(j+1, k, new QTableWidgetItem(temp1));
+                                 twInfo->setItem(j, k, new QTableWidgetItem(temp2));
+                         }
+                     }
+                 }
+             }
+            for(int k = 0; k < 5; k++) {
+                sorted[k] = 0;
+            }
+            sorted[logicalIndex] = 1;
+        }
+
+    }
+
+//   for(int i = 0; i < twInfo->rowCount(); i++) {
+//        for(int j = 0; j < twInfo->rowCount() - 1; j++) {
+//            if (functions[logicalIndex](twInfo->item(j, logicalIndex), twInfo->item(j + 1, logicalIndex))) {
+//                    for(int k = 0; k < twInfo->columnCount(); k++) {
+//                        QString temp1 = twInfo->item(j, k)->text();
+//                        QString temp2 = twInfo->item(j + 1, k) -> text();
+//                        twInfo->setItem(j+1, k, new QTableWidgetItem(temp1));
+//                        twInfo->setItem(j, k, new QTableWidgetItem(temp2));
+//                }
+//            }
+//        }
+//    }
 
 }
 
@@ -135,10 +235,8 @@ void MainWindow::on_pbChoice_clicked()
     QGridLayout *tableLayout = new QGridLayout(table);
     table->setMinimumSize(700,700);
     twInfo = new QTableWidget(table);
-//    twInfo->setSortingEnabled(true);
     tableLayout->addWidget(twInfo);
     twInfo->setColumnCount(5);
-    twInfo->setEditTriggers(0);
     twInfo->setRowCount(list.size());
     twInfo->setHorizontalHeaderItem(0, new QTableWidgetItem("Имя"));
     twInfo->setHorizontalHeaderItem(1, new QTableWidgetItem("Размер"));

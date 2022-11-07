@@ -26,6 +26,7 @@ private:
     QFileInfoList *aDirList;
     QListViewExplorerModel *model;
     QTableWidget *twInfo;
+    int *sorted = new int[5];
 
 private slots:
     void dialogClose();
